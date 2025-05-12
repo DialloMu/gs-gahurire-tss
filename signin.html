@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <title>signin.com</title>
+<link rel="stylesheet"href="bluestyle.css">
+    </head>
+    <body style="background-color: rgb(171, 209, 243);">
+        <button onclick="history.back()" style="border-radius: 5px;
+        position:fixed;"><img src="button.png"width="30px"height="30px"></button><br>
+        <center><h1>log into your account and upload your photo</h1></center>
+        <center>
+    <div class="grid-kit">
+        <div class="grid-sect">
+        <center>
+        <form style="background-color: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); width: 300px;">
+            <h2 style="text-align: center; color: #333;">sign in</h2>
+    
+            <label for="name" style="display: block; margin-bottom: 5px; color: #333;">Name:</label>
+            <input type="text" id="name" name="name" required 
+                style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;">
+    
+            <label for="email" style="display: block; margin-bottom: 5px; color: #333;">Email:</label>
+            <input type="email" id="email" name="email" required 
+                style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;">
+    
+            <label for="password" style="display: block; margin-bottom: 5px; color: #333;">Password:</label>
+            <input type="password" id="password" name="password" required 
+                style="width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px;">
+                
+    
+            
+            <button type="submit" style="width: 100%; padding: 10px; background-color: #28a745; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                Register
+
+            </button>
+           
+        </form></center>
+        
+        <center>
+        <p> By Creating an account you agree to our <a href="#">Terms&Privacy</a>.<br><br>
+            <p>Already haven't an account?<a href="signup.html">Sign up</a></p>
+        </center>
+    </div>
+    <script>
+        function previewImage(event) {
+            var reader = new FileReader();
+            reader.onload = function(){
+                var output = document.getElementById('preview');
+                output.src = reader.result;
+                output.style.display = 'block';
+            };
+            reader.readAsDataURL(event.target.files[0]);
+        }
+    </script>
+<div class="grid-sect">
+
+    <div style="background-color: #0f0f0f; padding: 30px; border-radius: 10px;border: 2px solid #0f0f0f;
+    width: 30%;height: 50px; box-shadow: 0 0 10px rgba(0,0,0,0.1); text-align: center;">
+        <h2 style="color: #8a8787;">Upload Your Photo</h2>
+
+        <input type="file" accept="image/*" onchange="previewImage(event)" 
+            style="margin-top: 15px; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+
+        <img id="preview" src="#" alt="Image Preview" 
+            style="margin-top: 20px; max-width: 100%; height: auto; display: none; border: 1px solid #ddd; border-radius: 5px;">
+    </div>
+
+</div>
+</div>
+
+</body>
+</html>
+    </body>
+    </body>
+</html>

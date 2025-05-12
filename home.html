@@ -1,0 +1,94 @@
+<html>
+    <head>
+        <link rel="stylesheet"href="bluestyle.css">
+        <title>www.gsgahurire/tss.com</title>
+        <script src="https://kit.fontawesome.com/9a8df06793.js" crossorigin="anonymous"></script>
+
+    </head>
+    <body>
+        <div class="header">
+        <h1 data-key="header"><marquee>WELCOME TO G.S GAHURIRE/TSS WEBSITE</marquee></h1>
+       </div>
+       <div class="nav">
+        <center>
+        <a href="about.html" data-key="about"><i class="fa-solid fa-book"></i>About</a>&nbsp&nbsp&nbsp&nbsp&nbsp
+        <a href="news.html" data-key="news"><i class="fa-solid fa-newspaper"></i>News</a>&nbsp&nbsp&nbsp&nbsp&nbsp
+        <a href="photos.html" data-key="photos"><i class="fa-solid fa-image"></i>Photos</a>&nbsp&nbsp&nbsp&nbsp
+        <a href="contact.html" data-key="contact"><i class="fa-solid fa-phone-volume"></i>contact</a>&nbsp&nbsp&nbsp&nbsp
+        <a href="signin.html" data-key="signin"><i class="fa-solid fa-user"></i></a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+        
+    </center>
+    <img src="llogo.PNG"width="60px"height="50px"style="border-radius:5px;
+    text-align:left; left:5px;">
+    </div>
+
+    <center>
+        <input type="search" id="searchInput"placeholder="search...">
+        <button id="searchButton"><i class="fa-solid fa-magnifying-glass"></i></button>
+        <script>
+          // Get references to the input and button
+          const searchInput = document.getElementById('searchInput');
+          const searchButton = document.getElementById('searchButton');
+      
+          // Add event listener to the button
+          searchButton.addEventListener('click', function() {
+            const query = searchInput.value; // Get the value from the input
+            console.log('Searching for:', query); // Do something with it (here, just log it)
+      
+            // You could also redirect, filter a list, make an API call, etc.
+            // window.location.href = '/search?q=' + encodeURIComponent(query);
+          });
+
+          searchInput.addEventListener('keypress', function(event) {
+  if (event.key === 'Enter') {
+    searchButton.click();
+  }
+});
+        </script>
+
+
+    </center>
+    <div class="section">
+    <div class="grid-container">
+      <div class="grid-item">
+       <h3>we have some option for this</h3>
+       <p>📚 Academics</p>
+       <p>📝 Admission</p>
+       <p>📸 Gallery</p>
+       <p>📞 Contact Us</p>
+      </div>
+      <div class="grid-item">
+        <h2>Welcome to Our School Website</h2>
+        <p>We are glad to share our achievements, updates, and academic information with you.</p>
+        <a href="welcome.html"><i class="fa-solid fa-handshake"></i>Welcome</a>
+      </div>
+      <div class="grid-item">
+        <p>we have(4) phases of education in  GS GAHURIRE/TSS.some are:</p>
+        <ul>
+          <li>Nursery</li>
+          <li>Primary</li>
+          <li>Ordinary level</li>
+          <li>Advanced level</li>
+        </ul>
+      </div>
+     
+    
+  </div>
+    <div class="footer">
+       <span>
+        <h3>Contact us</h3>
+       </span>
+       <p>📞 <a href="tel:+250 788 430">(+250) 728111005</a></p>
+      <p>📧 <a href="mailto:info@gahurire.com">info@gahurire.com</a></p>
+      <p>📍 Ngoma, East, Rwanda</p>
+      <p>&copy; 2025 Gs Gahurire. All rights reserved.</p>
+     
+    
+    </div>
+    
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+      </script>
+    </body>
+</html>

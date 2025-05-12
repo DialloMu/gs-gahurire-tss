@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <title>contact.html</title>
+        <link rel="stylesheet"href="bluestyle.css">
+    </head>
+    <body style="background-color: black;">
+
+    <button onclick="history.back()"><img src="button.png"width="30px"height="30px"></button>
+<section id="contact">
+<h1>WHERE YOU CAN FIND US</h1>
+    <h2>Contact Us</h2>
+  
+    <div class="contact-info">
+      <p><strong>📍 School Address:</strong> Ngoma,kazo,karama,mpandu,gahurire</p>
+      <p><strong>📍 Address:</strong> Gahurire, Rwanda</p>
+      <p><strong>📞 Phone Number:</strong> +250 788 123 456</p>
+      <p><strong>✉️ Email Address</strong> <a href="mailto:info@gsgahurire.rw">info@gsgahurire.rw</a></p>
+      <p><strong>🕘 Office Hours</strong> Monday – Friday, 8:00 AM – 5:00 PM</p>
+    </div>
+  <center><div class="form">
+    <form action="submit_contact.php" method="POST" class="contact-form">
+      <h3>Send Us a Message</h3>
+      <label for="name">Full Name:</label><br>
+      <input type="text" id="name" name="name" required><br><br>
+  
+      <label for="email">Email Address:</label><br>
+      <input type="email" id="email" name="email" required><br><br>
+  
+      <label for="message">Your Message:</label><br>
+      <textarea id="message" name="message" rows="5" required></textarea><br><br>
+  
+      <button type="submit">Send Message</button>
+      <button onclick="history.reset()">resets</button>
+    </form>
+</div></center>
+  </section>
+</body>
+</html>

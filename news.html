@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>www.News.com</title>
+<link rel="stylesheet"href="bluestyle.css">
+</head>
+<body>
+
+  <h1>News</h1>
+
+  <div class="admin-form">
+    <h2>Add News (Admin Panel)</h2>
+    <input type="text" id="newsTitle" placeholder="News Title" />
+    <textarea id="newsContent" rows="3" placeholder="News Content"></textarea>
+    <button onclick="addNews()">Add News</button>
+  </div>
+  <div class="grid-container">
+    <div class="grid-item">
+      <h2>Internaship</h2>
+      <p>We have the 2 part of the student that make internaship.so, the first part is level 3 SOD, BDC, LSV,
+         second's level4</p>
+         <p>in level 3 All they will finish internaship at 21<sup>th</sup>,may , 2025
+         </p>
+         <p>in level 4 SOD, thet will finish internaship at 8<sup>th</sup>, may , 2025</p>
+    </div>
+    <div class="grid-item">
+      <h2>Academic Info</h2>
+      <p>we start the our school to study at 07:00A.m-17:00P.m</p>
+      <p>In assembly at the morning we go at 80:15A.m .in assembly we listen the broad casting of Gahurire/tss</p>
+      <p>We have the meeting with the  parent discussing to the students in study</p>
+
+    </div>
+    <div class="grid-item">
+      <h2>Sport</h2>
+      <p>in the football Gahurire they defeated in 1/<sub>2</sub>of the champion</p>
+      <p>in the volley ball they bring cup in the every champion</p>
+      <p>Gahurire they make Sport for all students. so, it help students and leaders to be friend.</p>
+    </div>
+    <!-- You can add more grid items here -->
+  </div>
+  
+  <div class="news-grid" id="newsGrid">
+    <div class="news-box empty">Empty Slot</div>
+    <div class="news-box empty">Empty Slot</div>
+    <div class="news-box empty">Empty Slot</div>
+    <div class="news-box empty">Empty Slot</div>
+
+    <div class="news-box empty">Empty Slot</div>
+    <div class="news-box empty">Empty Slot</div>
+    <div class="news-box empty">Empty Slot</div>
+    <div class="news-box empty">Empty Slot</div>
+    <div class="news-box empty">Empty Slot</div>
+    <div class="news-box empty">Empty Slot</div>
+  </div>
+
+  <script>
+    function addNews() {
+      const title = document.getElementById('newsTitle').value.trim();
+      const content = document.getElementById('newsContent').value.trim();
+
+      if (!title || !content) {
+        alert("Please enter both title and content.");
+        return;
+      }
+
+      const boxes = document.querySelectorAll('.news-box');
+      let placed = false;
+
+      boxes.forEach(box => {
+        if (box.classList.contains('empty') && !placed) {
+          box.classList.remove('empty');
+          box.innerHTML = `<h3>${title}</h3><p>${content}</p>`;
+          placed = true;
+        }
+      });
+
+      if (!placed) {
+        alert("All 5 news slots are full.");
+      }
+
+      // Clear form
+      document.getElementById('newsTitle').value = '';
+      document.getElementById('newsContent').value = '';
+    }
+  </script>
+
+</body>
+</html>
