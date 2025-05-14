@@ -83,6 +83,14 @@ a{
 .link{
     text-align: center;
 }
+.sub{
+   background-color: #555;
+   text-align: center;
+   width: 60px;
+   height: 60px;
+   border: 5px;
+   
+}
 </style>
     </head>
     <body>
@@ -126,9 +134,11 @@ a{
               <p>Professional editing and shooting services to bring your projects to life, ensuring high-quality results.</p>
               <button class="add-to-cart" data-product-id="4">Add to Cart</button>
             </div>
+            <div class="sub">
+              <a href="submit.html">Go To Cart</a>
+            </div>
           </div>
-        
-
+          
           <script>
             const cart = [];
           
@@ -169,6 +179,14 @@ a{
               cart.length = 0;
               updateCartDisplay();
             });
+            function addToCart(productId) {
+  cart.push(productId);
+  localStorage.setItem('cart', JSON.stringify(cart));
+  alert('Product added to cart!');
+  // Redirect to checkout (optional: remove this line if you want multiple items before checkout)
+  window.location.href = 'checkout.html';
+}
+
           </script>
           
     </body>
