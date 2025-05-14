@@ -1,66 +1,175 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Our Products - Gahurire TSS</title>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <style>
-    .pro-header{
-      background-color: black;
-      width: 100%;
-      height: 150px;
-    }
-    .butt{
-      margin-top: 10px;
-    }
-    .text{
-      color: white;
-      text-align: center;
-    }
-    .link{
-      text-align: center;
-      color:white;
-    }
-a{
-  color: #fff;
+<html>
+    <head>
+        <title>products.com</title>
+<style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 columns */
-    gap: 20px;
-    padding: 20px;
-  }
 
-  .grid-item {
-    background-color: #93b5f5;
-    border: 4px  #ccc;
-    padding: 20px;
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.product-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-5px);
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.product-card h3 {
+  font-size: 1.2em;
+  margin: 15px;
+}
+
+.product-card p {
+  font-size: 0.9em;
+  margin: 0 15px 15px;
+  color: #555;
+}
+
+.add-to-cart {
+  display: block;
+  width: calc(100% - 30px);
+  margin: 0 15px 15px;
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  text-align: center;
+  border: none;
+  border-radius: 4px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-to-cart:hover {
+  background-color: #218838;
+}
+.title{
+    background-color: black;
+    width: 100%;
+    height:120px;
+    color: #f4f4f4;
+}
+.title h2{
     text-align: center;
-    font-family: Arial, sans-serif;
-  }
-    
-  </style>
-</head>
-<body>
-    
- <div class="pro-header">
-  <div class="butt">
-  <button onclick="history.back()" ><img src="button.png"width="30px"height="30px"></button>
-</div>
-<div class="text">
-  <h2> OUR PRODUCT</h2>
-</div>
-<div class="link">
-  <a href="homeproduct.html">Home</a>&nbsp&nbsp&nbsp&nbsp&nbsp
-  <a href="about.html">About</a>&nbsp&nbsp&nbsp&nbsp&nbsp
-  <a href="price.html">Price</a>&nbsp&nbsp&nbsp&nbsp&nbsp
-</div>
- </div>
- <div class="grid-container">
-  <div class="grid-item"></div>
-  <div class="grid-item"></div>
-  <div class="grid-item"></div>
-  </div>
-</body>
+}
+a{
+    color: white;
+}
+.link{
+    text-align: center;
+}
+</style>
+    </head>
+    <body>
+        <div class="title">
+        <h2>OUR PRODUCT!</h2><br>
+        <div class="link">
+            <a href="about.html">About</a>&nbsp&nbsp&nbsp&nbsp
+            <a href="home.html">Home</a>&nbsp&nbsp&nbsp&nbsp
+            <a href="contact.html">Contact us</a>&nbsp&nbsp&nbsp&nbsp
+        </div>
+    </div>
+        <div class="product-grid">
+            <!-- Furniture Sales -->
+            <div class="product-card">
+              <img src="furniture.jpg" alt="Furniture Sales">
+              <h3>Furniture Sales</h3>
+              <p>Explore our wide range of quality furniture, from modern designs to classic styles, all crafted to meet your needs.</p>
+              <button class="add-to-cart" data-product-id="1">Add to Cart</button>
+            </div>
+          
+            <!-- Building Blocks -->
+            <div class="product-card">
+              <img src="block.jpg" alt="Building Blocks">
+              <h3>Building Blocks</h3>
+              <p>High-quality building blocks available in various sizes and materials, perfect for any construction project.</p>
+              <button class="add-to-cart" data-product-id="2">Add to Cart</button>
+            </div>
+          
+            <!-- Paving Stones -->
+            <div class="product-card">
+              <img src="paving.jpg" alt="Paving Stones">
+              <h3>Paving Stones</h3>
+              <p>Durable and stylish paving stones to enhance your outdoor spaces, available in multiple colors and patterns.</p>
+              <button class="add-to-cart" data-product-id="3">Add to Cart</button>
+            </div>
+          
+            <!-- Editing and Shooting Services -->
+            <div class="product-card">
+              <img src="shot.jpg" alt="Editing and Shooting Services">
+              <h3>Editing and Shooting</h3>
+              <p>Professional editing and shooting services to bring your projects to life, ensuring high-quality results.</p>
+              <button class="add-to-cart" data-product-id="4">Add to Cart</button>
+            </div>
+          </div>
+        
+
+          <script>
+            const cart = [];
+          
+            document.querySelectorAll('.add-to-cart').forEach(button => {
+              button.addEventListener('click', () => {
+                const productId = button.getAttribute('data-product-id');
+                addToCart(productId);
+              });
+            });
+          
+            function addToCart(productId) {
+              cart.push(productId);
+              alert('Product added to cart!');
+              updateCartDisplay();
+            }
+          
+            function updateCartDisplay() {
+              const cartContainer = document.getElementById('cart-items');
+              cartContainer.innerHTML = '';
+              cart.forEach(productId => {
+                const li = document.createElement('li');
+                li.textContent = `Product ${productId}`;
+                cartContainer.appendChild(li);
+              });
+            }
+          
+            document.getElementById('checkout-form').addEventListener('submit', (e) => {
+              e.preventDefault();
+              const formData = new FormData(e.target);
+              const orderDetails = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                products: cart,
+              };
+              console.log('Order Submitted:', orderDetails);
+              alert('Thank you for your order!');
+              cart.length = 0;
+              updateCartDisplay();
+            });
+          </script>
+          
+    </body>
 </html>
