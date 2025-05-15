@@ -23,11 +23,11 @@
       margin: auto;
     }
 
-    .cart-items, .user-details {
+    .cart-items, .user-details, .reenter-section {
       margin-top: 20px;
     }
 
-    input[type="text"], input[type="email"], input[type="tel"] {
+    input[type="text"], input[type="email"], input[type="tel"], input[type="number"] {
       width: 100%;
       padding: 10px;
       margin: 10px 0;
@@ -63,11 +63,13 @@
   <div class="checkout-section">
     <h2>Checkout</h2>
 
+    <!-- Products in Cart -->
     <div class="cart-items">
       <h3>Products in Cart:</h3>
       <ul id="cart-list"></ul>
     </div>
 
+    <!-- Form for customer -->
     <form id="checkout-form">
       <h3>Enter Your Details:</h3>
       <input type="text" name="name" placeholder="Your Name" required>
@@ -76,50 +78,71 @@
       <button type="submit">Submit Order</button>
     </form>
 
+    <!-- Confirmation -->
     <div class="submitted-info" id="submitted-info" style="display: none;">
       <h3>Submitted Information:</h3>
       <p><strong>Name:</strong> <span id="user-name"></span></p>
       <p><strong>Email:</strong> <span id="user-email"></span></p>
       <p><strong>Phone:</strong> <span id="user-phone"></span></p>
     </div>
+
+    <!-- Re-enter Section -->
+    <div class="reenter-section">
+      <h3>Re-enter Product</h3>
+      <input type="text" id="new-product-name" placeholder="Product Name" required>
+      <input type="number" id="new-product-qty" placeholder="Quantity" min="1" required>
+      <input type="number" id="new-product-price" placeholder="Unit Price" min="1" required>
+      <button onclick="addReenteredProduct()">Add Product</button>
+    </div>
   </div>
 
   <script>
-    const productMap = {
-      1: 'Furniture Sales',
-      2: 'Building Blocks',
-      3: 'Paving Stones',
-      4: 'Editing and Shooting'
-    };
-
-    // Load cart from localStorage
-    const cart = JSON.parse(localStorage.getItem('cart') || '[]');
     const cartList = document.getElementById('cart-list');
-    if (cart.length === 0) {
-      cartList.innerHTML = '<li>No products selected.</li>';
-    } else {
-      cart.forEach(id => {
-        const item = document.createElement('li');
-        item.textContent = productMap[id] || `Product ${id}`;
-        cartList.appendChild(item);
-      });
+
+    // Load product from URL if present
+    const urlParams = new URLSearchParams(window.location.search);
+    const product = urlParams.get("product");
+    const quantity = urlParams.get("quantity");
+    const total = urlParams.get("total");
+
+    if (product && quantity && total) {
+      const item = document.createElement('li');
+      item.textContent = `${product} - Qty: ${quantity} - Total: ${total} RWF`;
+      cartList.appendChild(item);
     }
 
-    // Handle form submission
+    // Handle customer info
     document.getElementById('checkout-form').addEventListener('submit', function (e) {
       e.preventDefault();
       const formData = new FormData(e.target);
 
-      const name = formData.get('name');
-      const email = formData.get('email');
-      const phone = formData.get('phone');
-
-      document.getElementById('user-name').textContent = name;
-      document.getElementById('user-email').textContent = email;
-      document.getElementById('user-phone').textContent = phone;
-
+      document.getElementById('user-name').textContent = formData.get('name');
+      document.getElementById('user-email').textContent = formData.get('email');
+      document.getElementById('user-phone').textContent = formData.get('phone');
       document.getElementById('submitted-info').style.display = 'block';
     });
+
+    // Function to add new product via "re-enter"
+    function addReenteredProduct() {
+      const name = document.getElementById('new-product-name').value;
+      const qty = parseInt(document.getElementById('new-product-qty').value);
+      const price = parseInt(document.getElementById('new-product-price').value);
+
+      if (!name || isNaN(qty) || isNaN(price) || qty <= 0 || price <= 0) {
+        alert("Please enter valid product details.");
+        return;
+      }
+
+      const total = qty * price;
+      const li = document.createElement('li');
+      li.textContent = `${name} - Qty: ${qty} - Total: ${total} RWF`;
+      cartList.appendChild(li);
+
+      // Clear inputs
+      document.getElementById('new-product-name').value = '';
+      document.getElementById('new-product-qty').value = '';
+      document.getElementById('new-product-price').value = '';
+    }
   </script>
 </body>
 </html>
